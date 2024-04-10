@@ -1309,7 +1309,7 @@ end
 
 -- [neural] -----------------------------------------------------------------
 if is_available "neural" or is_available "copilot" then
-  maps.n["<leader>a"] = {
+  maps.n["<leader>ag"] = {
     function() require("neural").prompt() end,
     desc = "Ask chatgpt",
   }

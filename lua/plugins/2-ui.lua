@@ -504,7 +504,7 @@ return {
     opts = function()
       local enable_conceal = false          -- Hide command text if true
       return {
-        presets = { bottom_search = true }, -- The kind of popup used for /
+        presets = { bottom_search = false }, -- The kind of popup used for /
         cmdline = {
           view = "cmdline",                 -- The kind of popup used for :
           format = {
@@ -517,7 +517,6 @@ return {
             input = { conceal = enable_conceal },
           }
         },
-
         -- Disable every other noice feature
         messages = { enabled = false },
         lsp = {
@@ -530,7 +529,57 @@ return {
       }
     end
   },
-
+-- TODO: Implement to replace above implementation
+--[[
+   {
+    "folke/noice.nvim",
+    event = "User BaseDefered",
+    opts = function()
+      return {
+        views = {
+          cmdline_popup = {
+            position = {
+              row = 5,
+              col = "50%",
+            },
+            size = {
+              width = 60,
+              height = "auto",
+            },
+          },
+          popupmenu = {
+            relative = "editor",
+            position = {
+              row = 8,
+              col = "50%",
+            },
+            size = {
+              width = 60,
+              height = 10,
+            },
+            border = {
+              style = "rounded",
+              padding = { 0, 1 },
+            },
+            win_options = {
+              winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+            },
+          },
+        -- Disable every other noice feature
+          messages = { enabled = false },
+          lsp = {
+            hover = { enabled = false },
+            signature = { enabled = false },
+            progress = { enabled = false },
+            message = { enabled = false },
+            smart_move = { enabled = false },
+          },
+        },
+      }
+  end
+  },
+  -- END MY NOICE CONFIG
+  --]]
   --  UI icons [icons]
   --  https://github.com/nvim-tree/nvim-web-devicons
   {
