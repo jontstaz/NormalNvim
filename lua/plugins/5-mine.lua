@@ -99,4 +99,49 @@ return {
     "charludo/projectmgr.nvim",
     lazy = false,
   },
+  {
+  "epwalsh/obsidian.nvim",
+  version = "*",
+  lazy = false,
+  ft = "markdown",-- recommended, use latest release instead of latest commit
+  requires = {
+    -- Required.
+    "nvim-lua/plenary.nvim",
+
+    -- see below for full list of optional dependencies 👇
+  },
+  config = function()
+    require("obsidian").setup({
+      workspaces = {
+        {
+          name = "main",
+          path = "~/Documents/ObsidianVault/PeriodicPara/Periodic Para",
+        },
+        {
+          name = "old",
+          path = "~/Documents/ObsidianVault/ObsidianVault",
+        },
+      },
+      templates = {
+        subdir = "0. PeriodicNotes/Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        -- A map for custom variables, the key should be the variable and the value a function
+        substitutions = {},
+      },
+      daily_notes = {
+        -- Optional, if you keep daily notes in a separate directory.
+        folder = "0. PeriodicNotes",
+        -- Optional, if you want to change the date format for the ID of daily notes.
+        date_format = "%Y/Daily/%m/%Y-%m-%d",
+        -- Optional, if you want to change the date format of the default alias of daily notes.
+        alias_format = "%B %-d, %Y",
+        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+        template = 'Daily.md'
+      },
+
+      -- see below for full list of options 👇
+    })
+  end,
+}
 }
